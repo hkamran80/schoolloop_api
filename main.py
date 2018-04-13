@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
+from bs4 import BeautifulSoup as bs
 import requests
 import getpass
-import bs
 
 subdomain = input("SchoolLoop subdomain (mvhs): ")
 username = input("Username: ")
@@ -15,14 +15,14 @@ args.append(username)
 args.append(password)
 
 r1 = requests.get(("https://" + args[0] + ".schoolloop.com/portal/guest_home?d=x"))
-s1 = bs.bs(r1.text)
+s1 = bs(r1.text, "html.parser")
 
 form_data_id = s1.find("input", {"id": "form_data_id"})["value"]
 cookies_sent = {"JSESSIONID": r1.cookies["JSESSIONID"], "slid": r1.cookies["slid"]}
 payload = {"login_name": args[1], 'password': args[2], 'event_override': 'login', 'form_data_id': form_data_id}
 
 r2 = requests.post(("https://" + args[0] + ".schoolloop.com/portal/guest_home?etarget=login_form"), cookies=cookies_sent, data=payload)
-s2 = bs.bs(r2.text)
+s2 = bs(r2.text, "html.parser")
 
 grades = []
 
