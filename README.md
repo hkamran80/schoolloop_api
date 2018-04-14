@@ -1,7 +1,7 @@
 # SchoolLoop: unofficial API
 1. Clone this repository:
-  * Download the `.ZIP`
-  * In your terminal, run `git clone https://github.com/hkamran80/schoolloop_api`
+   * Download the `.ZIP`
+   * In your terminal, run `git clone https://github.com/hkamran80/schoolloop_api`
 2. `pip3 install -r requirements.txt`
 3. `python3 main.py`
 # Why was this created?
